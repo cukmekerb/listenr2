@@ -1,0 +1,52 @@
+const {parse} = require('rss-to-json');
+
+let headers = {
+	"content-type": "application/json"
+};
+
+exports.handler = async (event, context) => {
+	let rssurl = decodeURIComponent(event.queryStringParameters.url);
+	
+	if (!rssurl) return {
+		statusCode: 404,
+		body: `{"error": "There was no provided RSS URL"}`,
+		headers
+	};
+	
+	try {
+		let res_len = Number(event.queryStringParameters.items) || 50; // how many results to give
+		let start_from = Number(event.queryStringParameters.startfrom) || 0; // where to start from
+		let json_feed = await parse(rssurl);
+		json_feed.items = json_feed.items.sort((a, b) => {
+			let dates = [a.published, b.published];
+			if (dates[0] < dates[1]) return 1;
+			if (dates[1] < dates[0]) return -1;
+			return 0;
+		});
+
+		let new_items = json_feed.items.splice(start_from, res_len);
+		let new_feed = JSON.parse(JSON.stringify(json_feed));
+		new_feed.items = new_items;
+		new_feed = JSON.stringify(new_feed);
+
+		// allitems param
+		if (event.queryStringParameters.allitems == 1 || event.queryStringParameters.allitems == "true") {
+			new_feed = JSON.stringify(json_feed);
+		}
+
+		return {
+			headers,
+			statusCode: 200,
+			body: new_feed
+		};
+	}
+	catch (err) {
+		return {
+			headers,
+			statusCode: 200,
+			body: JSON.stringify({
+				error: err.message
+			})
+		};
+	}
+};

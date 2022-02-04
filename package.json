@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "node-fetch": "2",
+    "rss-to-json": "^2.0.2",
+    "sanitize-html": "^2.7.0"
+  }
+}
