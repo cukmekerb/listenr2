@@ -16,7 +16,8 @@ exports.handler = async (event, context) => {
   showdata = JSON.stringify(showdata);
   return {
     headers: {
-      "content-type": "application/json"
+	"content-type": "application/json",
+	"access-control-allow-origin": "*"
     },
     statusCode: 200,
     body: showdata

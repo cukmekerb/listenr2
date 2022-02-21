@@ -1,7 +1,8 @@
 const fetch = require("node-fetch");
 
 let headers = {
-	"content-type": "application/json"
+	"content-type": "application/json",
+	"access-control-allow-origin": "*"
 };
 
 exports.handler = async (event, context) => {
