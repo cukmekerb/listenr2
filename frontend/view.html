@@ -3,9 +3,47 @@
 	<head>
 		<title>Fake Show - Listenr</title>
 		<link rel="stylesheet" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height" />
 		<!-- TODO: metatags and stuff -->
 	</head>
 	<body>
-		<div class="subscribe_button" onclick="event.target.classList.toggle('subscribed')"></div>
+		<div class="page_cont flex flex-wrap">
+			<div class="showdetails flex">
+				<div>
+					<img src="https://i.redd.it/gk2kdkxcn8o81.jpg" class="show_art">
+				
+				</div>
+				<div>
+					<h1>
+						Really Cool podcast
+					</h1>
+					<span class="author">
+						Author
+					</span>
+					<p class="show_description">
+						This is a really cool show with a bit of a long winded description, which is cool because that means I can test out word wrapping and stuff like that!
+					</p>
+					<div class="subscribe_button" onclick="event.target.classList.toggle('subscribed')"></div>
+				</div>
+			</div>
+			<div>
+				<div class="episode">
+					<h3>
+						This is an episode!!!!
+					</h3>
+					<span>
+						This is the description of the episode. very cool huh?
+					</span>
+				</div>
+				<div class="episode">
+					<h3>
+						This is another episode!!!!
+					</h3>
+					<span>
+						This is the description of the othr episode. very cool huh?
+					</span>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
