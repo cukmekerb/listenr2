@@ -19,9 +19,9 @@
 	--theme-nagbar-color: red;
 
 	/* indicator colors */
-	--theme-indicator-good: #54ff4e;
+	--theme-indicator-good: #1dbd45;
 	--theme-indicator-okay: #ffdb4e;
-	--theme-indicator-bad: #ff4e4e;
+	--theme-indicator-bad: #f03f3f;
 	
 	--theme-main-font: 'Noto Sans', sans-serif;
 	--theme-main-font-size: 16px;
@@ -121,18 +121,20 @@ h1 {
 }
 
 .subscribe_button {
-	background: transparent;
-	border-style: solid;
-	border-width: 2px;
-	border-radius: 2px;
+	color: var(--theme-button-text-color);
+	border-radius: 4px;
 	font-size: 20px;
-	padding: 2px;
+	padding: 2px 12px;
 	cursor: pointer;
-	transition: 0.5s;
+	transition: 0.35s, transform 0.1s;
 	overflow: hidden !important;
 	text-align: center;
-	height: 27px;
 	user-select: none;
+	height: 27px;
+}
+
+.subscribe_button:active {
+	transform: scale(0.9);
 }
 
 .subscribe_button > span {
@@ -140,8 +142,7 @@ h1 {
 }
 
 .subscribe_button:not(.subscribed) { /* TODO: use classList.toggle() for this */
-	color: var(--theme-indicator-bad);
-	border-color: var(--theme-indicator-bad);
+	background: var(--theme-indicator-bad);
 	width: 110px;
 }
 
@@ -151,8 +152,7 @@ h1 {
 }
 
 .subscribed {
-	color: var(--theme-indicator-good);
-	border-color: var(--theme-indicator-good);
+	background: var(--theme-indicator-good);
 	width: 150px;
 }
 
