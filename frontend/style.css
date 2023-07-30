@@ -22,7 +22,7 @@
 	--theme-indicator-good: #1dbd45;
 	--theme-indicator-okay: #ffdb4e;
 	--theme-indicator-bad: #f03f3f;
-	
+
 	--theme-main-font: 'Noto Sans', sans-serif;
 	--theme-main-font-size: 16px;
 }
@@ -70,7 +70,7 @@ h1 {
 	height: var(--width-and-height);
 	border-radius: 5px;
 	margin-right: 15px;
-	
+
 }
 
 .showdetails {
@@ -126,7 +126,7 @@ h1 {
 	font-size: 20px;
 	padding: 2px 12px;
 	cursor: pointer;
-	transition: 0.35s, transform 0.1s;
+	transition: 0.3s, transform 0.05s;
 	overflow: hidden !important;
 	text-align: center;
 	user-select: none;
@@ -134,7 +134,7 @@ h1 {
 }
 
 .subscribe_button:active {
-	transform: scale(0.9);
+	transform: scale(0.92);
 }
 
 .subscribe_button > span {
@@ -151,6 +151,11 @@ h1 {
 	content: "Subscribe";
 }
 
+.subscribe_button:not(.subscribed)::after {
+	width: 0;
+	opacity: 0;
+}
+
 .subscribed {
 	background: var(--theme-indicator-good);
 	width: 150px;
@@ -161,7 +166,7 @@ h1 {
 	content: "Subscribed ";
 }
 
-.subscribed::after {
+.subscribe_button::after {
 	content: "done";
 	font-family: 'Material Icons Outlined';
 	font-weight: normal;
@@ -174,6 +179,8 @@ h1 {
 	white-space: nowrap;
 	word-wrap: normal;
 	direction: ltr;
+	transition: 0.3s;
+	width: 24px;
 	-moz-font-feature-settings: 'liga';
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 24px;
